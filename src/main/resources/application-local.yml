@@ -1,0 +1,9 @@
+logging:
+  level:
+    com.example.dogmiddleware: DEBUG
+
+springdoc:
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:true}
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:true}

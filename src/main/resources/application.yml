@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: dog-middleware
+  profiles:
+    default: local
+
+server:
+  port: ${SERVER_PORT:8081}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+external:
+  dog-api:
+    base-url: ${DOG_API_BASE_URL:https://dog.ceo/api}
+    connect-timeout: ${DOG_API_CONNECT_TIMEOUT:5000}
+    read-timeout: ${DOG_API_READ_TIMEOUT:10000}
+
+springdoc:
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:true}
+    path: /swagger-ui.html
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:true}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    root: INFO
+    com.example.dogmiddleware: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{correlationId}] [%logger{36}] - %msg%n"
